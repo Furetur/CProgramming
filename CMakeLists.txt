@@ -3,4 +3,4 @@ project(Homework)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Homework hw1/1.1.c lib/arrayutils/arrayutils.c lib/arrayutils/arrayutils.h lib/stringutils/stringutils.c lib/stringutils/stringutils.h lib/numberutils/numberutils.c lib/numberutils/numberutils.h lib/commonutils/commonutils.c lib/commonutils/commonutils.h lib/maxheap/maxheap.c lib/maxheap/maxheap.h lib/heapsort/heapsort.c lib/heapsort/heapsort.h lib/2dvector/Vector2d.c lib/2dvector/Vector2d.h lib/hashtable/hashtable.c lib/hashtable/hashtable.h)
+add_executable(Homework hw1/1.1.c lib/arrayutils/arrayutils.c lib/arrayutils/arrayutils.h lib/stringutils/stringutils.c lib/stringutils/stringutils.h lib/numberutils/numberutils.c lib/numberutils/numberutils.h lib/commonutils/commonutils.c lib/commonutils/commonutils.h lib/maxheap/maxheap.c lib/maxheap/maxheap.h lib/heapsort/heapsort.c lib/heapsort/heapsort.h lib/2dvector/vector2d.c lib/2dvector/vector2d.h lib/hashtable/hashtable.c lib/hashtable/hashtable.h)
