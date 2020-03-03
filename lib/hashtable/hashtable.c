@@ -69,7 +69,8 @@ HashTable* newHashTableSized(const int desiredSize)
 }
 
 
-HashTable* newHashTable() {
+HashTable* newHashTable()
+{
     return newHashTableSized(HASHTABLE_DEFAULT_SIZE);
 }
 
@@ -92,7 +93,8 @@ void resizeHashTable(HashTable* hashTable, const int newSize)
 
     HashTable* newHashTable = newHashTableSized(newSize);
 
-    for (int i = 0; i < hashTable->size; ++i) {
+    for (int i = 0; i < hashTable->size; ++i)
+    {
         const DataItem* curItem = hashTable->items[i];
         if (curItem == NULL || curItem == &DELETED_DATA_ITEM)
         {

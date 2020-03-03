@@ -102,7 +102,8 @@ void freeInt2dArray(int** array, const int numRows) {
 
 
 void freeBool2dArray(bool** array, const int numRows) {
-    for (int i = 0; i < numRows; ++i) {
+    for (int i = 0; i < numRows; ++i)
+    {
         free(array[i]);
     }
     free(array);
@@ -164,7 +165,8 @@ void reverseIntArray(int arr[], const int start, const int end)
 {
     int left = start;
     int right = end;
-    while (left < right) {
+    while (left < right)
+    {
         int temp = arr[left];
         arr[left] = arr[right];
         arr[right] = temp;

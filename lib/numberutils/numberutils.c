@@ -48,7 +48,8 @@ int* countDigitOccurrences(const int* digits, const int size)
 
 bool isPrime(const int number)
 {
-    for (int i = 2; i < number - 1; ++i) {
+    for (int i = 2; i < number - 1; ++i)
+    {
         if ((number % i) == 0)
         {
             return false;

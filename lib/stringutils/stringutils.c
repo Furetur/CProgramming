@@ -8,7 +8,8 @@
 #include "../arrayutils/arrayutils.h"
 
 
-int countSubstringOccurrences(const char* parentString, const int parentLength, const char* childString, const int childLength)
+int countSubstringOccurrences(const char* parentString, const int parentLength,
+        const char* childString, const int childLength)
 {
     if (parentLength < childLength)
     {
@@ -16,7 +17,8 @@ int countSubstringOccurrences(const char* parentString, const int parentLength, 
     }
 
     int counter = 0;
-    for (int leftIndex = 0; leftIndex <= parentLength - childLength; ++leftIndex) {
+    for (int leftIndex = 0; leftIndex <= parentLength - childLength; ++leftIndex)
+    {
         char* parentSubstring = getSubarray(parentString, leftIndex, leftIndex + parentLength - 1);
         if (areArraysEqual(parentSubstring, childString, childLength))
         {
