@@ -32,7 +32,7 @@ typedef struct LinkedListIterator
 } LinkedListIterator;
 
 
-LinkedListItem* newLinkedListItem(int val, LinkedListItem* next, LinkedListItem* prev);
+LinkedListItem* newLinkedListItem(int val, LinkedListItem *next, LinkedListItem *prev);
 
 void deleteLinkedListItem(LinkedListItem* linkedListItem);
 
