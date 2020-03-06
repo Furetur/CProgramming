@@ -16,7 +16,7 @@ LinkedList* newLinkedList()
 }
 
 
-LinkedListItem* newLinkedListItem(const int val, LinkedListItem *next, LinkedListItem *prev)
+LinkedListItem* newLinkedListItem(int val, LinkedListItem* next, LinkedListItem* prev)
 {
     LinkedListItem* item = malloc(sizeof(LinkedListItem));
     item->val = val;
@@ -162,17 +162,6 @@ int linkedListIteratorDeleteNext(LinkedListIterator* iterator)
 void deleteLinkedList(struct LinkedList* list)
 {
     const int listInitialSize = list->size;
-
-    if (listInitialSize == 0)
-    {
-        free(list);
-        return;
-    }
-
-    // remove loops
-    list->tail->next = NULL;
-    list->head->prev = NULL;
-
     LinkedListIterator* iterator = getLinkedListIterator(list);
     while (linkedListIteratorHasNext(iterator) && iterator->traversedItems < listInitialSize)
     {
@@ -194,7 +183,7 @@ void deleteLinkedList(struct LinkedList* list)
 }
 
 
-LinkedListItem* linkedListGetItem(struct LinkedList* list, const int index)
+LinkedListItem* linkedListGetItem(struct LinkedList* list, int index)
 {
     LinkedListIterator* iterator = getLinkedListIterator(list);
 
@@ -217,7 +206,7 @@ LinkedListItem* linkedListGetItem(struct LinkedList* list, const int index)
 }
 
 
-int linkedListGet(LinkedList* list, const int index)
+int linkedListGet(LinkedList* list, int index)
 {
     LinkedListItem* item = linkedListGetItem(list, index);
     if (item == NULL)
@@ -228,7 +217,7 @@ int linkedListGet(LinkedList* list, const int index)
 }
 
 
-int linkedListDeleteItem(struct LinkedList* list, const int index)
+int linkedListDeleteItem(struct LinkedList* list, int index)
 {
     if (list->size == 0)
     {
@@ -249,7 +238,7 @@ int linkedListDeleteItem(struct LinkedList* list, const int index)
 }
 
 
-void linkedListInsertItem(LinkedList* list, const int val, const int index)
+void linkedListInsertItem(LinkedList* list, int val, int index)
 {
     if (list->size == 0)
     {
@@ -292,31 +281,20 @@ void linkedListInsertItem(LinkedList* list, const int val, const int index)
 }
 
 
-void linkedListPushBack(LinkedList* list, const int val)
+void linkedListPushBack(LinkedList* list, int val)
 {
     linkedListInsertItem(list, val, list->size);
 }
 
 
-// optimized
-void linkedListPushFront(struct LinkedList* list, const int val)
+void linkedListPushFront(struct LinkedList* list, int val)
 {
     linkedListInsertItem(list, val, 0);
 }
 
-
-// optimized
 int linkedListPopBack(struct LinkedList* list)
 {
-    if (list->tail == NULL)
-    {
-        return -1;
-    }
-
-    const int tailValue = list->tail->val;
-    linkedListItemPullOut(list, list->tail);
-
-    return tailValue;
+    return linkedListDeleteItem(list, list->size - 1);
 }
 
 
