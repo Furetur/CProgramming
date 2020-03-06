@@ -16,7 +16,7 @@ LinkedList* newLinkedList()
 }
 
 
-LinkedListItem* newLinkedListItem(int val, LinkedListItem* next, LinkedListItem* prev)
+LinkedListItem* newLinkedListItem(const int val, LinkedListItem *next, LinkedListItem *prev)
 {
     LinkedListItem* item = malloc(sizeof(LinkedListItem));
     item->val = val;
@@ -188,7 +188,7 @@ void deleteLinkedList(struct LinkedList* list)
 }
 
 
-LinkedListItem* linkedListGetItem(struct LinkedList* list, int index)
+LinkedListItem* linkedListGetItem(struct LinkedList* list, const int index)
 {
     LinkedListIterator* iterator = getLinkedListIterator(list);
 
@@ -211,7 +211,7 @@ LinkedListItem* linkedListGetItem(struct LinkedList* list, int index)
 }
 
 
-int linkedListGet(LinkedList* list, int index)
+int linkedListGet(LinkedList* list, const int index)
 {
     LinkedListItem* item = linkedListGetItem(list, index);
     if (item == NULL)
@@ -222,7 +222,7 @@ int linkedListGet(LinkedList* list, int index)
 }
 
 
-int linkedListDeleteItem(struct LinkedList* list, int index)
+int linkedListDeleteItem(struct LinkedList* list, const int index)
 {
     if (list->size == 0)
     {
@@ -243,7 +243,7 @@ int linkedListDeleteItem(struct LinkedList* list, int index)
 }
 
 
-void linkedListInsertItem(LinkedList* list, int val, int index)
+void linkedListInsertItem(LinkedList* list, const int val, const int index)
 {
     if (list->size == 0)
     {
@@ -286,14 +286,14 @@ void linkedListInsertItem(LinkedList* list, int val, int index)
 }
 
 
-void linkedListPushBack(LinkedList* list, int val)
+void linkedListPushBack(LinkedList* list, const int val)
 {
     linkedListInsertItem(list, val, list->size);
 }
 
 
 // optimized
-void linkedListPushFront(struct LinkedList* list, int val)
+void linkedListPushFront(struct LinkedList* list, const int val)
 {
     linkedListInsertItem(list, val, 0);
 }
