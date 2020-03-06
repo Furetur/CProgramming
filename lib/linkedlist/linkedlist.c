@@ -287,14 +287,25 @@ void linkedListPushBack(LinkedList* list, int val)
 }
 
 
+// optimized
 void linkedListPushFront(struct LinkedList* list, int val)
 {
     linkedListInsertItem(list, val, 0);
 }
 
+
+// optimized
 int linkedListPopBack(struct LinkedList* list)
 {
-    return linkedListDeleteItem(list, list->size - 1);
+    if (list->tail == NULL)
+    {
+        return -1;
+    }
+
+    const int tailValue = list->tail->val;
+    linkedListItemPullOut(list, list->tail);
+
+    return tailValue;
 }
 
 
