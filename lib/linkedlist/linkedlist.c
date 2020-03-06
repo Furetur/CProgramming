@@ -162,6 +162,11 @@ int linkedListIteratorDeleteNext(LinkedListIterator* iterator)
 void deleteLinkedList(struct LinkedList* list)
 {
     const int listInitialSize = list->size;
+
+    // remove loops
+    list->tail->next = NULL;
+    list->head->prev = NULL;
+
     LinkedListIterator* iterator = getLinkedListIterator(list);
     while (linkedListIteratorHasNext(iterator) && iterator->traversedItems < listInitialSize)
     {
