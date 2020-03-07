@@ -8,6 +8,10 @@
 #include "../arrayutils/arrayutils.h"
 
 
+const int DIGITS[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+const int DIGITS_NUM = 10;
+
+
 int countSubstringOccurrences(const char* parentString, const int parentLength,
         const char* childString, const int childLength)
 {
@@ -43,6 +47,44 @@ int* countCharOccurrences(const char* str)
 }
 
 
+bool isSymbolDigit(const char symbol)
+{
+    for (int i = 0; i < 10; ++i) {
+        if (symbol == '0' + i)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+int getDigitFromSymbol(const char symbol)
+{
+    return (int) (symbol - '0');
+}
+
+
+bool isSymbolMathOperator(const char symbol)
+{
+    return symbol == '+' || symbol == '*' || symbol == '/' || symbol == '-';
+}
+
+
+bool isInteger(char* string)
+{
+    const int length = strlen(string);
+
+    for (int i = 0; i < length; ++i) {
+        if (!isSymbolDigit(string[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 long long hashCode(char* string, const int prime, const int modulo)
 {
     const unsigned long length = strlen(string);
@@ -55,4 +97,46 @@ long long hashCode(char* string, const int prime, const int modulo)
         primeRaisedToThePower = (primeRaisedToThePower * prime) % modulo;
     }
     return  result;
+}
+
+
+int integerFromString(char* string)
+{
+    const int stringLength = (int) strlen(string);
+    int result = 0;
+
+    for (int i = 0; i < stringLength; ++i) {
+        const int curDigit = getDigitFromSymbol(string[i]);
+        result = result * 10 + curDigit;
+    }
+    return result;
+}
+
+
+// supports only ( and ) parenthesis
+bool isBalanced(const char str[])
+{
+    const int length = strlen(str);
+
+    int counter = 0;
+    for (int i = 0; i < length; ++i)
+    {
+        if (str[i] == '(')
+        {
+            counter++;
+        }
+        if (str[i] == ')')
+        {
+            counter--;
+        }
+        if (counter < 0)
+        {
+            return false;
+        }
+    }
+    if (counter != 0)
+    {
+        return false;
+    }
+    return true;
 }

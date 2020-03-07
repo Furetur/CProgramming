@@ -7,6 +7,7 @@
 #define HOMEWORK_ARRAYUTILS_H
 
 
+void emptyCharArray(char* array, int size);
 
 char* createCharArray(int size);
 
@@ -37,6 +38,10 @@ void readIntArray(int arr[], int size);
 void printIntArray(const int arr[], int size);
 
 void emptyIntArray(int arr[], int size);
+
+char* copyCharArray(char* array);
+
+void writeCharArrayIntoArray(char* parentArray, char* childArray, int parentArrayStartIndex);
 
 void reverseIntArray(int arr[], int start, int end);
 
