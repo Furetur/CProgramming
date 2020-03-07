@@ -13,17 +13,17 @@ const int EXPRESSION_MAX_SIZE = 500;
 
 int main()
 {
-    char* exp = createCharArray(EXPRESSION_MAX_SIZE);
+    char* infixExpression = createCharArray(EXPRESSION_MAX_SIZE);
 
     printf("Enter an expression in the infix form:\n");
-    scanf("%[^\n]", exp);
+    scanf("%[^\n]", infixExpression);
 
-    char* result = convertInfixToPostfix(exp);
+    char* postfixExpression = convertInfixToPostfix(infixExpression);
 
-    printf("Your expression in the postfix form: %s\n", result);
+    printf("Your expression in the postfix form: %s\n", postfixExpression);
 
-    free(exp);
-    free(result);
+    free(infixExpression);
+    free(postfixExpression);
 
     return 0;
 }
