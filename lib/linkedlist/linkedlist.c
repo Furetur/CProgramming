@@ -163,6 +163,12 @@ void deleteLinkedList(struct LinkedList* list)
 {
     const int listInitialSize = list->size;
 
+    if (listInitialSize == 0)
+    {
+        free(list);
+        return;
+    }
+
     // remove loops
     list->tail->next = NULL;
     list->head->prev = NULL;
