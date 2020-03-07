@@ -15,15 +15,15 @@ const int EXPRESSION_MAX_SIZE = 500;
 
 int main()
 {
-    char* exp = createCharArray(EXPRESSION_MAX_SIZE);
+    char* postfixExpression = createCharArray(EXPRESSION_MAX_SIZE);
 
     printf("Enter the expression in the postfix form:\n");
-    scanf("%[^\n]", exp);
+    scanf("%[^\n]", postfixExpression);
 
-    const int result = evaluatePostfixExpression(exp);
+    const int result = evaluatePostfixExpression(postfixExpression);
 
     printf("Evaluation result: %d\n", result);
 
-    free(exp);
+    free(postfixExpression);
     return 0;
 }
