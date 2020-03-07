@@ -10,6 +10,10 @@
 #include "string.h"
 
 
+char operatorIds[5] = {'+', '-', '*', '/', '('};
+const int operatorPrecedence[5] = {2, 2, 3, 3, 1};
+
+
 char** createTokensArray(const int length)
 {
     char** tokens = malloc(length * sizeof(char*));
@@ -166,3 +170,157 @@ int evaluatePostfixExpression(char expression[])
     return result;
 }
 
+
+int getOperatorId(const char operator)
+{
+    if (operator == '+')
+    {
+        return 0;
+    }
+    if (operator == '-')
+    {
+        return 1;
+    }
+    if (operator == '*')
+    {
+        return 2;
+    }
+    if (operator == '/')
+    {
+        return 3;
+    }
+    if (operator == '(')
+    {
+        return 4;
+    }
+    if (operator == ')')
+    {
+        return 5;
+    }
+    return -1;
+}
+
+
+char getOperatorFromId(const int operatorId)
+{
+    return operatorIds[operatorId];
+}
+
+
+char* convertInfixToPostfix(char* expression)
+{
+    const int expressionLength = strlen(expression);
+    char** tokens = parseIntoTokens(expression);
+
+    Stack* operatorStack = newStack();
+
+    char* postfixExpression = createCharArray(expressionLength + 1);
+    int postfixExpressionIndex = 0;
+
+    for (int i = 0; i < expressionLength; ++i) {
+        char* curToken = tokens[i];
+
+        // break if all the tokens have been read
+        if (curToken == NULL)
+        {
+            break;
+        }
+
+        const int curTokenLength = strlen(curToken);
+
+        if (isInteger(curToken))
+        {
+            // write the number to the output
+
+            // if it not the beginning of the string then add a whitespace
+            if (postfixExpressionIndex != 0)
+            {
+                postfixExpression[postfixExpressionIndex] = ' ';
+                postfixExpressionIndex++;
+            }
+            // write the number into the array
+            writeCharArrayIntoArray(postfixExpression, curToken, postfixExpressionIndex);
+            // increment the index
+            postfixExpressionIndex += curTokenLength;
+            continue;
+        }
+        if (curTokenLength != 1)
+        {
+            // exception
+            continue;
+        }
+        if (curToken[0] == '(')
+        {
+            // add ( to the stack
+            stackPush(operatorStack, getOperatorId('('));
+            continue;
+        }
+        if (curToken[0] == ')')
+        {
+            int topOperator = stackPop(operatorStack);
+            // pop all operators that are not (
+            while (topOperator != getOperatorId('('))
+            {
+                // add a whitespace
+                postfixExpression[postfixExpressionIndex] = ' ';
+                postfixExpressionIndex++;
+                // write operator to the output
+                postfixExpression[postfixExpressionIndex] = getOperatorFromId(topOperator);
+                postfixExpressionIndex++;
+                // pop the operator from stack
+                topOperator = stackPop(operatorStack);
+            }
+            continue;
+        }
+        // if symbol is one of + - * /
+        if (isSymbolMathOperator(curToken[0]))
+        {
+            const int curOperatorId = getOperatorId(curToken[0]);
+            const int curOperatorPrecedence = operatorPrecedence[curOperatorId];
+
+            // pop all operators that are more important than the current operator
+            while (operatorStack->size > 0 && operatorPrecedence[stackPeek(operatorStack)] > curOperatorPrecedence)
+            {
+                // write operator to the output
+                const int topOperatorId = stackPop(operatorStack);
+                const char topOperator = getOperatorFromId(topOperatorId);
+                // write a whitespace
+                postfixExpression[postfixExpressionIndex] = ' ';
+                postfixExpressionIndex++;
+                // write the topOperator
+                postfixExpression[postfixExpressionIndex] = topOperator;
+                postfixExpressionIndex++;
+            }
+            stackPush(operatorStack, curOperatorId);
+        }
+    }
+
+    // if the stack is not empty
+    while (operatorStack->size > 0)
+    {
+        const int operatorId = stackPop(operatorStack);
+        const char operator = getOperatorFromId(operatorId);
+
+        // write a whitespace
+        postfixExpression[postfixExpressionIndex] = ' ';
+        postfixExpressionIndex++;
+        // write the top operator from stack
+        postfixExpression[postfixExpressionIndex] = operator;
+        postfixExpressionIndex++;
+    }
+
+    // delete stack
+    deleteStack(operatorStack);
+    // delete tokens
+    for (int i = 0; i < expressionLength; ++i) {
+        if (tokens[i] == NULL)
+        {
+            break;
+        }
+        free(tokens[i]);
+    }
+    free(tokens);
+
+
+    return postfixExpression;
+}
