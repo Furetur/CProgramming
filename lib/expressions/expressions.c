@@ -214,7 +214,7 @@ char* convertInfixToPostfix(char* expression)
 
     Stack* operatorStack = newStack();
 
-    char* postfixExpression = createCharArray(expressionLength + 1);
+    char* postfixExpression = createCharArray(expressionLength * 2 + 1);
     int postfixExpressionIndex = 0;
 
     for (int i = 0; i < expressionLength; ++i) {
