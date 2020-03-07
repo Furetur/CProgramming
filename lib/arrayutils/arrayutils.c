@@ -5,7 +5,17 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "string.h"
 #include "arrayutils.h"
+
+
+void emptyCharArray(char* array, const int size)
+{
+    for (int i = 0; i < size; ++i) {
+        array[i] = (char) 0;
+    }
+}
+
 
 // Array creators
 
@@ -13,10 +23,7 @@
 char* createCharArray(const int size)
 {
     char* arr = calloc(size, sizeof(char));
-    for (int i = 0; i < size; ++i)
-    {
-        arr[i] = '\0';
-    }
+    emptyCharArray(arr, size);
     return arr;
 }
 
@@ -158,6 +165,25 @@ void emptyIntArray(int arr[], const int size)
     {
         arr[i] = 0;
     }
+}
+
+
+void writeCharArrayIntoArray(char* parentArray, char* childArray, int parentArrayStartIndex)
+{
+    for (int i = 0; i < strlen(childArray); ++i) {
+        parentArray[i + parentArrayStartIndex] = childArray[i];
+    }
+}
+
+
+char* copyCharArray(char* array)
+{
+    const int length = strlen(array);
+    char* destination = createCharArray(length + 1);
+    for (int i = 0; i < length; ++i) {
+        destination[i] = array[i];
+    }
+    return destination;
 }
 
 
