@@ -42,6 +42,8 @@ void reverseIntArray(int arr[], int start, int end);
 
 bool areArraysEqual(const char* arr1, const char* arr2, int size);
 
+bool areIntArraysEqual(const int* arr1, const int* arr2, int size);
+
 char* getSubarray(const char* array, int start, int end);
 
 int* copyIntArray(const int* array, int size);
