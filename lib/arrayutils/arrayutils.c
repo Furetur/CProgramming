@@ -9,22 +9,32 @@
 #include "arrayutils.h"
 
 
-void emptyCharArray(char* array, const int size)
+void fillCharArray(char* array, const int size, const char val)
 {
     for (int i = 0; i < size; ++i) {
-        array[i] = (char) 0;
+        array[i] = (char) val;
     }
+}
+
+
+void emptyCharArray(char* array, const int size)
+{
+    fillCharArray(array, size, (char) 0);
 }
 
 
 // Array creators
 
+char* createCharArrayWithVal(const int size, const char defaultVal)
+{
+    char* arr = calloc(size, sizeof(char));
+    fillCharArray(arr, size, defaultVal);
+    return arr;
+}
 
 char* createCharArray(const int size)
 {
-    char* arr = calloc(size, sizeof(char));
-    emptyCharArray(arr, size);
-    return arr;
+    return createCharArrayWithVal(size, (char) 0);
 }
 
 

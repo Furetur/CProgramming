@@ -7,7 +7,11 @@
 #define HOMEWORK_ARRAYUTILS_H
 
 
+void fillCharArray(char* array, int size, char val);
+
 void emptyCharArray(char* array, int size);
+
+char* createCharArrayWithVal(int size, char defaultVal);
 
 char* createCharArray(int size);
 
