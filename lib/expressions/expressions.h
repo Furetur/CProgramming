@@ -6,6 +6,8 @@
 #define HOMEWORK_EXPRESSIONS_H
 
 
+int evaluatePostfixExpression(char expression[]);
+
 char* convertInfixToPostfix(char* expression);
 
 #endif //HOMEWORK_EXPRESSIONS_H
