@@ -57,5 +57,8 @@ int* copyIntArray(const int* array, int size);
 
 void quickSort(int* arr,int startIndex,int endIndex);
 
+bool allTruthy(const bool* arr, int size);
+
+int findFirstInBoolArray(const bool* arr, bool val, int size);
 
 #endif //HOMEWORK_ARRAYUTILS_H

@@ -290,3 +290,38 @@ void quickSort(int* arr,const int startIndex,const int endIndex)
     quickSort(arr, pivotIndex + 1, endIndex);
 }
 
+
+bool allTruthy(const bool* arr, const int size)
+{
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == false)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool allFalsy(const bool* arr, const int size)
+{
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == true)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+int findFirstInBoolArray(const bool* arr, const bool val, const int size)
+{
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == val)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
