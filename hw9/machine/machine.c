@@ -69,7 +69,7 @@ void performAllNullTransitions(NonDeterministicMachine* machine)
         performNullTransitions(machine, state);
     }
 
-    free(currentStatesIterator);
+    deleteLinkedListIterator(currentStatesIterator);
 }
 
 void moveMachine(NonDeterministicMachine* machine, char token)
@@ -93,7 +93,7 @@ void moveMachine(NonDeterministicMachine* machine, char token)
     machine->currentStates = newStates;
 
     deleteLinkedList(oldStates);
-    free(statesIterator);
+    deleteLinkedListIterator(statesIterator);
 
     // perform all available null transitions
     performAllNullTransitions(machine);
