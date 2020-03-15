@@ -193,7 +193,7 @@ void deleteLinkedList(struct LinkedList* list)
     {
         deleteLinkedListItem(iterator->curItem);
     }
-    free(iterator);
+    deleteLinkedListIterator(iterator);
     free(list);
 }
 
@@ -209,13 +209,13 @@ LinkedListItem* linkedListGetItem(struct LinkedList* list, const int index)
 
     if (index + 1 != iterator->traversedItems)
     {
-        free(iterator);
+        deleteLinkedListIterator(iterator);
         return NULL;
     }
 
     LinkedListItem* result = iterator->curItem;
 
-    free(iterator);
+    deleteLinkedListIterator(iterator);
 
     return result;
 }
