@@ -70,7 +70,7 @@ void printCitiesOfCountries(WorldData* worldData)
         }
         printf("\n");
 
-        free(countryCitiesIterator);
+        deleteLinkedListIterator(countryCitiesIterator);
         deleteLinkedList(countryCities);
     }
 }

@@ -98,8 +98,8 @@ int* findDistances(const GraphAdjacencyList* graph, const int startVertex)
         visited[currentVertex] = true;
         currentVertex = findFirstInBoolArray(visited, false, graph->numVertices);
 
-        free(neighboursIterator);
-        free(edgeWeightsIterator);
+        deleteLinkedListIterator(neighboursIterator);
+        deleteLinkedListIterator(edgeWeightsIterator);
     }
 
     free(visited);
