@@ -43,7 +43,7 @@ int main()
     printf("The soldier who survives has the number %d in the initial list", list->head->val);
 
 
-    free(iterator);
+    deleteLinkedListIterator(iterator);
     deleteLinkedList(list);
 
     return 0;
