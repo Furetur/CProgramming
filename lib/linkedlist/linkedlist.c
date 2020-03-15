@@ -47,6 +47,10 @@ LinkedListIterator* getLinkedListIterator(LinkedList* list)
 
 void deleteLinkedListIterator(LinkedListIterator* iterator)
 {
+    if (iterator->traversedItems == 0)
+    {
+        deleteLinkedListItem(iterator->curItem);
+    }
     free(iterator);
 }
 

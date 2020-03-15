@@ -40,6 +40,8 @@ LinkedList* newLinkedList();
 
 LinkedListIterator* getLinkedListIterator(LinkedList* list);
 
+void deleteLinkedListIterator(LinkedListIterator* iterator);
+
 bool linkedListIteratorHasNext(struct LinkedListIterator* iterator);
 
 int linkedListIteratorGetNext(struct LinkedListIterator* iterator);
