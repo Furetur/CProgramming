@@ -68,4 +68,6 @@ void linkedListCreateLoop(struct LinkedList* list);
 
 int linkedListIteratorDeleteNext(LinkedListIterator* iterator);
 
+bool linkedListContains(struct LinkedList* list, int value);
+
 #endif //HOMEWORK_LINKEDLIST_H

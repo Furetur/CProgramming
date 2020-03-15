@@ -340,3 +340,21 @@ void linkedListCreateLoop(struct LinkedList* list)
     list->head->prev = list->tail;
     list->tail->next = list->head;
 }
+
+
+bool linkedListContains(struct LinkedList* list, const int value)
+{
+    LinkedListIterator* iterator = getLinkedListIterator(list);
+
+    while(linkedListIteratorHasNext(iterator))
+    {
+        const int curValue = linkedListIteratorGetNext(iterator);
+        if (curValue == value)
+        {
+            free(iterator);
+            return true;
+        }
+    }
+    free(iterator);
+    return false;
+}
