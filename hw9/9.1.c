@@ -21,7 +21,8 @@ void addOptionalSignsTransition(int** stateTable, const int from, const int to)
 
 void addOneOrMoreDigitsTransition(int** stateTable, const int from, const int to)
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
+    {
         stateTable[from]['0' + i] = to;
         stateTable[to]['0' + i] = to;
     }
@@ -75,7 +76,7 @@ int main()
     if (runMachine(realNumbersMachine, inputString))
     {
         printf("Your string represents a number");
-    } else{
+    } else {
         printf("It is not a number");
     }
 
