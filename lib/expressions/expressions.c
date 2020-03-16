@@ -18,7 +18,8 @@ char** createTokensArray(const int length)
 {
     char** tokens = malloc(length * sizeof(char*));
 
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         tokens[i] = NULL;
     }
     return tokens;
@@ -159,7 +160,8 @@ int evaluatePostfixExpression(char expression[])
     // delete stack
     deleteStack(stack);
     // delete tokens
-    for (int i = 0; i < expressionLength; ++i) {
+    for (int i = 0; i < expressionLength; ++i)
+    {
         if (tokens[i] == NULL)
         {
             break;
