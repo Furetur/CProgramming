@@ -93,15 +93,18 @@ bool** createBool2dArray(const int numRows, const int numCols)
 }
 
 
-void freeInt2dArray(int** array, const int numRows) {
-    for (int i = 0; i < numRows; ++i) {
+void freeInt2dArray(int** array, const int numRows)
+{
+    for (int i = 0; i < numRows; ++i)
+    {
         free(array[i]);
     }
     free(array);
 }
 
 
-void freeBool2dArray(bool** array, const int numRows) {
+void freeBool2dArray(bool** array, const int numRows)
+{
     for (int i = 0; i < numRows; ++i)
     {
         free(array[i]);
