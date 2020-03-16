@@ -10,7 +10,8 @@
 const int EXPRESSION_MAX_SIZE = 500;
 
 
-int main() {
+int main()
+{
     char* infixExpression = createCharArray(EXPRESSION_MAX_SIZE);
 
     printf("Enter the expression in the infix form:\n");
