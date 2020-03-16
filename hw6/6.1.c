@@ -13,7 +13,8 @@ bool* getBits(char byte)
     bool* bits = createBoolArrayWithVal(8, false);
 
     char shiftedByte = byte;
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i)
+    {
         bits[i] = (bool) (shiftedByte & 1);
         shiftedByte = shiftedByte >> 1;
     }
@@ -44,11 +45,13 @@ bool* getBitsFromDouble(double number)
 
 void splitDoubleBits(bool* bits, bool* signBit, bool* exponentBits, bool* mantissaBits)
 {
-    for (int i = 0; i < 52; ++i) {
+    for (int i = 0; i < 52; ++i)
+    {
         mantissaBits[i] = bits[i];
     }
 
-    for (int i = 52; i < 63; ++i) {
+    for (int i = 52; i < 63; ++i)
+    {
         exponentBits[i - 52] = bits[i];
     }
 
@@ -62,7 +65,8 @@ double getMantissaFromBits(bool* mantissaBits)
 
     long long powerOfTwo = 2;
 
-    for (int i = 51; i >= 0; --i) {
+    for (int i = 51; i >= 0; --i)
+    {
         mantissa += mantissaBits[i] * (((double) 1 ) / powerOfTwo);
         powerOfTwo *= 2;
     }
@@ -74,7 +78,8 @@ int getExponentFromBits(bool* exponentBits)
 {
     int exponent = 0;
 
-    for (int i = 10; i >= 0; --i) {
+    for (int i = 10; i >= 0; --i)
+    {
         exponent *= 2;
         exponent += exponentBits[i];
     }
