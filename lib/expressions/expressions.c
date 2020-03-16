@@ -63,7 +63,8 @@ char** parseIntoTokens(char expression[])
     char* curToken = createCharArray(length + 1);
     int curTokenSymbolIndex = 0;
 
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         const char curChar = expression[i];
         const int curCharTokenType = getTokenTypeBySymbol(curChar);
 
@@ -217,7 +218,8 @@ char* convertInfixToPostfix(char* expression)
     char* postfixExpression = createCharArray(expressionLength * 2 + 1);
     int postfixExpressionIndex = 0;
 
-    for (int i = 0; i < expressionLength; ++i) {
+    for (int i = 0; i < expressionLength; ++i)
+    {
         char* curToken = tokens[i];
 
         // break if all the tokens have been read
@@ -312,7 +314,8 @@ char* convertInfixToPostfix(char* expression)
     // delete stack
     deleteStack(operatorStack);
     // delete tokens
-    for (int i = 0; i < expressionLength; ++i) {
+    for (int i = 0; i < expressionLength; ++i)
+    {
         if (tokens[i] == NULL)
         {
             break;
