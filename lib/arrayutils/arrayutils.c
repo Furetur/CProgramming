@@ -11,7 +11,8 @@
 
 void fillCharArray(char* array, const int size, const char val)
 {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
         array[i] = (char) val;
     }
 }
