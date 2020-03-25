@@ -49,7 +49,8 @@ int* countCharOccurrences(const char* str)
 
 bool isSymbolDigit(const char symbol)
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
+    {
         if (symbol == '0' + i)
         {
             return true;
@@ -75,7 +76,8 @@ bool isInteger(char* string)
 {
     const int length = strlen(string);
 
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         if (!isSymbolDigit(string[i]))
         {
             return false;
@@ -105,7 +107,8 @@ int integerFromString(char* string)
     const int stringLength = (int) strlen(string);
     int result = 0;
 
-    for (int i = 0; i < stringLength; ++i) {
+    for (int i = 0; i < stringLength; ++i)
+    {
         const int curDigit = getDigitFromSymbol(string[i]);
         result = result * 10 + curDigit;
     }
