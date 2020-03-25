@@ -228,6 +228,18 @@ bool areArraysEqual(const char* arr1, const char* arr2, const int size)
     return true;
 }
 
+bool areIntArraysEqual(const int* arr1, const int* arr2, const int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        if (arr1[i] != arr2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 char* getSubarray(const char* array, const int start, const int end)
 {
