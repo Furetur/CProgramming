@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-
-struct LineReadingStatus {
+struct LineReadingStatus
+{
     bool lineEmpty;
     bool endOfFile;
 };
