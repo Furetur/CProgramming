@@ -2,8 +2,6 @@
 // Created by furetur on 03.03.2020.
 //
 
-#include <stddef.h>
-#include <stdlib.h>
 #include "stdio.h"
 #include "../lib/linkedlist/linkedlist.h"
 
