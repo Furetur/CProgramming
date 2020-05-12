@@ -9,9 +9,10 @@
 #include "../arrayutils/arrayutils.h"
 
 
-int countSubstringOccurrences(const char* parentString, const int parentLength,
-        const char* childString, const int childLength)
+int countSubstringOccurrences(const char* parentString, const char* childString)
 {
+    int parentLength = strlen(parentString);
+    int childLength = strlen(childString);
     if (parentLength < childLength)
     {
         return 0;
