@@ -20,7 +20,7 @@ struct LineReadingStatus checkNextLine(FILE* file)
         curChar = fgetc(file);
     }
 
-    return (struct LineReadingStatus){curLineEmpty, curChar == EOF};
+    return (struct LineReadingStatus){ curLineEmpty, curChar == EOF };
 }
 
 int main()
