@@ -12,8 +12,6 @@ int* countCharOccurrences(char* str);
 
 long long hashCode(char* string, int prime, int modulo);
 
-bool isSymbolDigit(char symbol);
-
 bool isInteger(char* string);
 
 bool isSymbolMathOperator(char symbol);
