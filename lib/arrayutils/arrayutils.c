@@ -298,7 +298,7 @@ void quickSort(int* arr, const int startIndex, const int endIndex)
 bool allTruthy(const bool* arr, const int size)
 {
     for (int i = 0; i < size; ++i) {
-        if (arr[i] == false)
+        if (!arr[i])
         {
             return false;
         }
@@ -310,7 +310,7 @@ bool allTruthy(const bool* arr, const int size)
 bool allFalsy(const bool* arr, const int size)
 {
     for (int i = 0; i < size; ++i) {
-        if (arr[i] == true)
+        if (arr[i])
         {
             return false;
         }
