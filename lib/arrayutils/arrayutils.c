@@ -282,7 +282,7 @@ int partitionArray(int* arr, const int startIndex, const int endIndex)
 }
 
 
-void quickSort(int* arr,const int startIndex,const int endIndex)
+void quickSort(int* arr, const int startIndex, const int endIndex)
 {
     if (startIndex >= endIndex)
     {
