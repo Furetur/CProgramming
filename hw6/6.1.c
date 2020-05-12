@@ -116,12 +116,12 @@ int main()
     splitDoubleBits(doubleBits, &signBit, exponentBits, mantissaBits);
 
     printf("How your number is represented in the computer:\n");
-    printf("%c%.10f * 2 ^ (%d)",
-           getSignChar(signBit),
-           getMantissaFromBits(mantissaBits),
-           getExponentFromBits(exponentBits));
-
-
+    printf(
+        "%c%.10f * 2 ^ (%d)",
+        getSignChar(signBit),
+        getMantissaFromBits(mantissaBits),
+        getExponentFromBits(exponentBits)
+    );
 
     free(inputString);
     free(doubleBits);
