@@ -25,7 +25,7 @@ struct LineReadingStatus checkNextLine(FILE* file)
 
 int main()
 {
-    FILE *file = fopen("file.txt", "r");
+    FILE *file = fopen("./../hw3/file.txt", "r");
 
     if (file == NULL)
     {
