@@ -7,6 +7,13 @@
 #include "stdlib.h"
 
 
+void swapIntPairs(IntPair* pair1, IntPair* pair2)
+{
+    IntPair temp = *pair1;
+    *pair1 = *pair2;
+    *pair2 = temp;
+}
+
 IntPair* convertIntArrayIntoPairs(const int* arr, const int size)
 {
     IntPair* pairs = calloc(sizeof(IntPair), size);
@@ -34,15 +41,12 @@ int partitionPairsArray(IntPair* arr, const int startIndex, const int endIndex)
         if (curElement.first < pivot.first)
         {
             // swap
-            IntPair temp = curElement;
-            arr[curIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-            arr[leftElementGreaterOrEqualThanPivotIndex] = temp;
+            swapIntPairs(&arr[curIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
             leftElementGreaterOrEqualThanPivotIndex++;
         }
     }
     // swap pivot with the first element that is >= than pivot
-    arr[pivotIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-    arr[leftElementGreaterOrEqualThanPivotIndex] = pivot;
+    swapIntPairs(&arr[pivotIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
     return leftElementGreaterOrEqualThanPivotIndex;
 }
 
