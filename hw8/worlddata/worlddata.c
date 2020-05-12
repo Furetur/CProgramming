@@ -64,7 +64,6 @@ int getNextCityOfInterest(const WorldData* worldData, const CountryData* country
     int currentCityOfInterestIndex = 0;
     int currentCityOfInterestId = countryData->closestCityIds[currentCityOfInterestIndex];
 
-
     while (
         currentCityOfInterestIndex < citiesNum &&
         (!isCityReachable(countryData, currentCityOfInterestId) || isCityClaimed(worldData, currentCityOfInterestId))
