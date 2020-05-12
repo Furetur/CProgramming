@@ -137,9 +137,5 @@ bool isBalanced(const char str[])
             return false;
         }
     }
-    if (counter != 0)
-    {
-        return false;
-    }
-    return true;
+    return counter == 0;
 }
