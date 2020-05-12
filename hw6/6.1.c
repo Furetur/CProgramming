@@ -43,7 +43,7 @@ bool* getBitsFromDouble(double number)
 }
 
 
-void splitDoubleBits(bool* bits, bool* signBit, bool* exponentBits, bool* mantissaBits)
+void splitDoubleBits(const bool* bits, bool* signBit, bool* exponentBits, bool* mantissaBits)
 {
     for (int i = 0; i < 52; ++i)
     {
@@ -59,7 +59,7 @@ void splitDoubleBits(bool* bits, bool* signBit, bool* exponentBits, bool* mantis
 }
 
 
-double getMantissaFromBits(bool* mantissaBits)
+double getMantissaFromBits(const bool* mantissaBits)
 {
     double mantissa = 1;
 
@@ -74,7 +74,7 @@ double getMantissaFromBits(bool* mantissaBits)
 }
 
 
-int getExponentFromBits(bool* exponentBits)
+int getExponentFromBits(const bool* exponentBits)
 {
     int exponent = 0;
 
