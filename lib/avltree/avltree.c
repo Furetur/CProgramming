@@ -151,7 +151,8 @@ AVLNode* insertKey(AVLNode* node, const int key)
     if (key < node->key)
     {
         node->left = insertKey(node->left, key);
-    } else
+    }
+    else
     {
         node->right = insertKey(node->right, key);
     }
@@ -264,7 +265,8 @@ char* toSortedString(AVLNode* node, bool reversed)
     {
         snprintf(sortedString, MAX_DEBUG_STRING_LENGTH,
                  "%s %d %s", leftSortedString, node->key, rightSortedString);
-    } else
+    }
+    else
     {
         snprintf(sortedString, MAX_DEBUG_STRING_LENGTH,
                  "%s %d %s", rightSortedString, node->key, leftSortedString);
