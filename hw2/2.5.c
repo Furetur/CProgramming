@@ -27,7 +27,8 @@ int main()
     if (areIntArraysEqual(charOccurrences1, charOccurrences2, NUMBER_OF_CHARS))
     {
         printf("The first string CAN be obtained from the second string by swapping the characters");
-    } else
+    }
+    else
     {
         printf("The first string CANNOT be obtained from the second string by swapping the characters");
     }
