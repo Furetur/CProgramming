@@ -76,7 +76,9 @@ int main()
     if (runMachine(realNumbersMachine, inputString))
     {
         printf("Your string represents a number");
-    } else {
+    }
+    else
+    {
         printf("It is not a number");
     }
 
