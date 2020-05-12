@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "arrayutils.h"
+#include "../commonutils/commonutils.h"
 
 
 void fillCharArray(char* array, const int size, const char val)
@@ -207,9 +208,7 @@ void reverseIntArray(int arr[], const int start, const int end)
     int right = end;
     while (left < right)
     {
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
+        swapInts(&arr[left], &arr[right]);
         left++;
         right--;
     }
@@ -269,15 +268,12 @@ int partitionArray(int* arr, const int startIndex, const int endIndex)
         if (curElement < pivot)
         {
             // swap
-            int temp = curElement;
-            arr[curIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-            arr[leftElementGreaterOrEqualThanPivotIndex] = temp;
+            swapInts(&arr[curIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
             leftElementGreaterOrEqualThanPivotIndex++;
         }
     }
     // swap pivot with the first element that is >= than pivot
-    arr[pivotIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-    arr[leftElementGreaterOrEqualThanPivotIndex] = pivot;
+    swapInts(&arr[pivotIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
     return leftElementGreaterOrEqualThanPivotIndex;
 }
 
