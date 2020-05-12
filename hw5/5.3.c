@@ -14,7 +14,7 @@ int main()
 {
     char* infixExpression = createCharArray(EXPRESSION_MAX_SIZE);
 
-    printf("Enter the expression in the infix form:\n");
+    printf("Enter the expression in the infix form (please do not use whitespaces):\n");
     scanf("%[^\n]", infixExpression);
 
     char* postfixExpression = convertInfixToPostfix(infixExpression);
