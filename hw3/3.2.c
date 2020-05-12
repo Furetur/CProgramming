@@ -13,10 +13,7 @@ struct LineReadingStatus checkNextLine(FILE* file)
     int curChar = fgetc(file);
     while (curChar != '\n' && curChar != EOF)
     {
-        if (curChar != '\t' && curChar != ' ')
-        {
-            curLineEmpty = false;
-        }
+        curLineEmpty &= (curChar == '\t' || curChar == ' ');
         curChar = fgetc(file);
     }
 
