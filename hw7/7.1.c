@@ -37,13 +37,15 @@ int main()
             scanf("%d", &number);
             AVLTreeInsert(tree, number);
             printf("> added %d\n", number);
-        } else if (strcmp(command,"remove") == 0)
+        }
+        else if (strcmp(command,"remove") == 0)
         {
             int number = 0;
             scanf("%d", &number);
             AVLTreeRemove(tree, number);
             printf("> removed %d\n", number);
-        } else if (strcmp(command,"has") == 0)
+        }
+        else if (strcmp(command,"has") == 0)
         {
             int number = 0;
             scanf("%d", &number);
@@ -53,22 +55,27 @@ int main()
             } else {
                 printf("> (FALSE) the tree does not include the key %d\n", number);
             }
-        } else if (strcmp(command,"sort") == 0)
+        }
+        else if (strcmp(command,"sort") == 0)
         {
             char* outputString = AVLTreeToSortedString(tree, false);
             printf("> %s\n", outputString);
             free(outputString);
-        } else if (strcmp(command,"sort_r") == 0)
+        }
+        else if (strcmp(command,"sort_r") == 0)
         {
             char* outputString = AVLTreeToSortedString(tree, true);
             printf("> %s\n", outputString);
             free(outputString);
-        } else if (strcmp(command,"debug") == 0)
+        }
+        else if (strcmp(command,"debug") == 0)
         {
             char* outputString = AVLTreeToDebugString(tree);
             printf("> %s\n", outputString);
             free(outputString);
-        } else {
+        }
+        else
+        {
             printf("> Unknown command\n");
         }
         scanf("%s", command);
