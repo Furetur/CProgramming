@@ -3,6 +3,7 @@
 //
 
 #include <stddef.h>
+#include <ctype.h>
 #include "../stack/stack.h"
 #include "../stringutils/stringutils.h"
 #include "../arrayutils/arrayutils.h"
@@ -10,7 +11,8 @@
 #include "string.h"
 
 
-char operatorIds[5] = {'+', '-', '*', '/', '('};
+const int OPERATORS_NUM = 5;
+const char operatorIds[5] = {'+', '-', '*', '/', '('};
 const int operatorPrecedence[5] = {2, 2, 3, 3, 1};
 
 
@@ -32,7 +34,7 @@ int getTokenTypeBySymbol(char symbol)
         // delimiter
         return 0;
     }
-    if (isSymbolDigit(symbol))
+    if (isdigit(symbol))
     {
         // digit
         return 1;
@@ -105,40 +107,16 @@ char** parseIntoTokens(char expression[])
 }
 
 
-
 int getOperatorId(const char operator)
 {
-    if (operator == '+')
+    for (int i = 0; i < OPERATORS_NUM; ++i)
     {
-        return 0;
-    }
-    if (operator == '-')
-    {
-        return 1;
-    }
-    if (operator == '*')
-    {
-        return 2;
-    }
-    if (operator == '/')
-    {
-        return 3;
-    }
-    if (operator == '(')
-    {
-        return 4;
-    }
-    if (operator == ')')
-    {
-        return 5;
+        if (operatorIds[i] == operator)
+        {
+            return i;
+        }
     }
     return -1;
-}
-
-
-char getOperatorFromId(const int operatorId)
-{
-    return operatorIds[operatorId];
 }
 
 
@@ -201,7 +179,7 @@ char* convertInfixToPostfix(char* expression)
                 postfixExpression[postfixExpressionIndex] = ' ';
                 postfixExpressionIndex++;
                 // write operator to the output
-                postfixExpression[postfixExpressionIndex] = getOperatorFromId(topOperator);
+                postfixExpression[postfixExpressionIndex] = operatorIds[topOperator];
                 postfixExpressionIndex++;
                 // pop the operator from stack
                 topOperator = stackPop(operatorStack);
@@ -219,7 +197,7 @@ char* convertInfixToPostfix(char* expression)
             {
                 // write operator to the output
                 const int topOperatorId = stackPop(operatorStack);
-                const char topOperator = getOperatorFromId(topOperatorId);
+                const char topOperator = operatorIds[topOperatorId];
                 // write a whitespace
                 postfixExpression[postfixExpressionIndex] = ' ';
                 postfixExpressionIndex++;
@@ -235,7 +213,7 @@ char* convertInfixToPostfix(char* expression)
     while (operatorStack->size > 0)
     {
         const int operatorId = stackPop(operatorStack);
-        const char operator = getOperatorFromId(operatorId);
+        const char operator = operatorIds[operatorId];
 
         // write a whitespace
         postfixExpression[postfixExpressionIndex] = ' ';
