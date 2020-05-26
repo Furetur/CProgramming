@@ -18,14 +18,16 @@ int main()
     printf("Every n-th soldier is killed. Enter n:\n");
     scanf("%d", &killStep);
 
-    if (soldiersNum == 0) {
+    if (soldiersNum == 0)
+    {
         printf("No soldiers - no deaths\n");
         return 0;
     }
 
     LinkedList* list = newLinkedList();
 
-    for (int i = 0; i < soldiersNum; ++i) {
+    for (int i = 0; i < soldiersNum; ++i)
+    {
         linkedListPushBack(list, i + 1);
     }
 
@@ -38,7 +40,9 @@ int main()
         if ((iterator->traversedItems + 1) % killStep == 0)
         {
             linkedListIteratorDeleteNext(iterator);
-        } else {
+        }
+        else
+        {
             linkedListIteratorGetNext(iterator);
         }
     }
