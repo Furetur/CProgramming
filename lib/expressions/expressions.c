@@ -223,7 +223,7 @@ int evaluatePostfixExpression(char expression[])
                 {
                     // division by zero
                     errno = 22;
-                    return 0;
+                    break;
                 }
                 result = operand1 / operand2;
             }
