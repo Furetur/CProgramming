@@ -8,3 +8,9 @@ add_executable(
         lib/arrayutils/arrayutils.c lib/arrayutils/arrayutils.h
         lib/commonutils/commonutils.c lib/commonutils/commonutils.h
 )
+add_executable(
+        Homework2Task5 hw2/2.5.c
+        lib/arrayutils/arrayutils.c lib/arrayutils/arrayutils.h
+        lib/stringutils/stringutils.c lib/stringutils/stringutils.h
+        lib/commonutils/commonutils.c lib/commonutils/commonutils.h
+)

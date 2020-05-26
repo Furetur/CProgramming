@@ -185,7 +185,8 @@ void emptyIntArray(int arr[], const int size)
 
 void writeCharArrayIntoArray(char* parentArray, char* childArray, int parentArrayStartIndex)
 {
-    for (int i = 0; i < strlen(childArray); ++i) {
+    for (int i = 0; i < strlen(childArray); ++i)
+    {
         parentArray[i + parentArrayStartIndex] = childArray[i];
     }
 }
@@ -195,7 +196,8 @@ char* copyCharArray(char* array)
 {
     const int length = strlen(array);
     char* destination = createCharArray(length + 1);
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         destination[i] = array[i];
     }
     return destination;
@@ -216,6 +218,18 @@ void reverseIntArray(int arr[], const int start, const int end)
 
 
 bool areArraysEqual(const char* arr1, const char* arr2, const int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        if (arr1[i] != arr2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool areIntArraysEqual(const int* arr1, const int* arr2, const int size)
 {
     for (int i = 0; i < size; ++i)
     {
@@ -293,7 +307,8 @@ void quickSort(int* arr, const int startIndex, const int endIndex)
 
 bool allTruthy(const bool* arr, const int size)
 {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
         if (!arr[i])
         {
             return false;
@@ -305,7 +320,8 @@ bool allTruthy(const bool* arr, const int size)
 
 bool allFalsy(const bool* arr, const int size)
 {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
         if (arr[i])
         {
             return false;
@@ -317,7 +333,8 @@ bool allFalsy(const bool* arr, const int size)
 
 int findFirstInBoolArray(const bool* arr, const bool val, const int size)
 {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
         if (arr[i] == val)
         {
             return i;
