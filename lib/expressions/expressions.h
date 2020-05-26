@@ -8,8 +8,6 @@
 
 #include <stdbool.h>
 
-bool areParenthesisBalanced(char* expression);
-
 char* convertInfixToPostfix(char* expression);
 
 bool isPostfixExpressionValid(char expression[]);
