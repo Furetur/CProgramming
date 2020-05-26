@@ -121,9 +121,5 @@ bool runMachine(NonDeterministicMachine* machine, const char* input)
             return false;
         }
     }
-    if (isMachineFinishedNow(machine))
-    {
-        return true;
-    }
-    return false;
+    return isMachineFinishedNow(machine);
 }
