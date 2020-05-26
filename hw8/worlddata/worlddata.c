@@ -118,7 +118,7 @@ void claimAllCities(WorldData* worldData)
     const int countriesNum = worldData->countriesNum;
     int curCountryId = 0;
 
-    while(!areAllCitiesClaimed(worldData))
+    while (!areAllCitiesClaimed(worldData))
     {
         claimNextCity(worldData, curCountryId);
 
