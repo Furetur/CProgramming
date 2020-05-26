@@ -18,9 +18,25 @@ int main()
     printf("Enter an expression in the infix form:\n");
     scanf("%[^\n]", infixExpression);
 
+    if (!areParenthesisBalanced(infixExpression))
+    {
+        printf("Wrong combination of parenthesis");
+        free(infixExpression);
+        return 0;
+    }
+
     char* postfixExpression = convertInfixToPostfix(infixExpression);
 
-    printf("Your expression in the postfix form: %s\n", postfixExpression);
+    bool isValid = isPostfixExpressionValid(postfixExpression);
+
+    if (isValid)
+    {
+        printf("Your expression in the postfix form: %s\n", postfixExpression);
+    }
+    else
+    {
+        printf("The expression you entered is not valid");
+    }
 
     free(infixExpression);
     free(postfixExpression);
