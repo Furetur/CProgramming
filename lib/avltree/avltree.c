@@ -112,7 +112,7 @@ AVLNode* balanceNode(AVLNode* node)
         }
         return rotateLeft(node);
     }
-    if (getBalanceFactor(node) == -2)
+    else if (getBalanceFactor(node) == -2)
     {
         if (getBalanceFactor(node->left) > 0)
         {
@@ -261,7 +261,7 @@ char* toSortedString(AVLNode* node, bool reversed)
     char* leftSortedString = toSortedString(node->left, reversed);
     char* rightSortedString = toSortedString(node->right, reversed);
 
-    if (reversed == false)
+    if (!reversed)
     {
         snprintf(sortedString, MAX_DEBUG_STRING_LENGTH,
                  "%s %d %s", leftSortedString, node->key, rightSortedString);
