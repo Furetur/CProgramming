@@ -9,3 +9,8 @@ add_executable(
         lib/commonutils/commonutils.c lib/commonutils/commonutils.h
         lib/avltree/avltree.h lib/avltree/avltree.c
 )
+add_executable(
+        Homework1Task11 hw1/1.11.c
+        lib/arrayutils/arrayutils.c lib/arrayutils/arrayutils.h
+        lib/commonutils/commonutils.c lib/commonutils/commonutils.h
+)
