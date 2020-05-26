@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "../lib/expressions/expressions.h"
 #include "../lib/arrayutils/arrayutils.h"
+#include "../lib/stringutils/stringutils.h"
 #include "stdio.h"
 
 const int EXPRESSION_MAX_SIZE = 500;
@@ -18,7 +19,7 @@ int main()
     printf("Enter an expression in the infix form:\n");
     scanf("%[^\n]", infixExpression);
 
-    if (!areParenthesisBalanced(infixExpression))
+    if (!isBalanced(infixExpression))
     {
         printf("Wrong combination of parenthesis");
         free(infixExpression);
