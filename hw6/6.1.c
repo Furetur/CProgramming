@@ -90,11 +90,7 @@ int getExponentFromBits(const bool* exponentBits)
 
 char getSignChar(bool sign)
 {
-    if (sign == true)
-    {
-        return '-';
-    }
-    return '+';
+    return sign ? '-' : '+';
 }
 
 
