@@ -15,11 +15,14 @@ GraphAdjacencyList* readCitiesGraph()
 {
     int citiesNum = 0;
     int roadsNum = 0;
+    printf("Enter the number of cities\n");
     scanf("%d", &citiesNum);
+    printf("Enter the number of roads\n");
     scanf("%d", &roadsNum);
 
     GraphAdjacencyList* citiesGraph = newGraphAdjacencyList(citiesNum);
 
+    printf("Enter the roads. Each road is a tuple: <start city> <destination city> <length>\n");
     for (int i = 0; i < roadsNum; ++i)
     {
         int roadStartCity = 0;
@@ -38,10 +41,12 @@ GraphAdjacencyList* readCitiesGraph()
 
 int* readCapitals(int* capitalsNum)
 {
+    printf("Enter the number of capitals\n");
     scanf("%d", capitalsNum);
 
     int* capitalIds = createIntArray(*capitalsNum);
 
+    printf("Enter the capitals\n");
     for (int countryId = 0; countryId < *capitalsNum; ++countryId)
     {
         int curCapitalId = 0;
