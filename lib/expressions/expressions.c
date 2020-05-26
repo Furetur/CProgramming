@@ -8,6 +8,7 @@
 #include "../arrayutils/arrayutils.h"
 #include "stdlib.h"
 #include "string.h"
+#include "errno.h"
 
 
 char operatorIds[5] = {'+', '-', '*', '/', '('};
@@ -105,6 +106,34 @@ char** parseIntoTokens(char expression[])
     return tokens;
 }
 
+bool isPostfixExpressionValid(char expression[])
+{
+    int length = strlen(expression);
+    char** tokens = parseIntoTokens(expression);
+    int counter = 0;
+    for (int i = 0; i < length; ++i)
+    {
+        char* curToken = tokens[i];
+        if (curToken == NULL)
+        {
+            break;
+        }
+        if (isInteger(curToken))
+        {
+            counter += 1;
+        }
+        else if (strlen(curToken) == 1 && isSymbolMathOperator(curToken[0]))
+        {
+            if (counter < 2)
+            {
+                return false;
+            }
+            counter -= 1;
+        }
+    }
+    return counter == 1;
+}
+
 
 int evaluatePostfixExpression(char expression[])
 {
@@ -146,6 +175,7 @@ int evaluatePostfixExpression(char expression[])
                 if (operand2 == 0)
                 {
                     // division by zero
+                    errno = 22;
                     return 0;
                 }
                 result = operand1 / operand2;
