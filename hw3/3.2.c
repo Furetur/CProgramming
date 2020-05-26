@@ -34,7 +34,7 @@ int main()
     int emptyLineCounter = 0;
     bool endOfFile = false;
 
-    while(!endOfFile)
+    while (!endOfFile)
     {
         lineCounter++;
         struct LineReadingStatus status = checkNextLine(file);
