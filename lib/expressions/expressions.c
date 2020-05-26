@@ -106,6 +106,79 @@ char** parseIntoTokens(char expression[])
     return tokens;
 }
 
+bool areParenthesisBalanced(char* expression)
+{
+    int length = strlen(expression);
+    int counter = 0;
+    for (int i = 0; i < length; ++i)
+    {
+        char curChar = expression[i];
+        if (curChar == '(')
+        {
+            counter += 1;
+        }
+        else if (curChar == ')')
+        {
+            counter -= 1;
+        }
+        if (counter < 0)
+        {
+            return false;
+        }
+    }
+    return counter == 0;
+}
+
+
+void freeTokens(char** tokens, int tokensNumberUpperBound)
+{
+    for (int i = 0; i < tokensNumberUpperBound; ++i)
+    {
+        if (tokens[i] == NULL)
+        {
+            break;
+        }
+        free(tokens[i]);
+    }
+    free(tokens);
+}
+
+
+bool isPostfixExpressionValid(char expression[])
+{
+    int length = strlen(expression);
+    char** tokens = parseIntoTokens(expression);
+    int counter = 0;
+    for (int i = 0; i < length; ++i)
+    {
+        char* curToken = tokens[i];
+        if (curToken == NULL)
+        {
+            break;
+        }
+        if (isInteger(curToken))
+        {
+            counter += 1;
+        }
+        else if (strlen(curToken) == 1 && isSymbolMathOperator(curToken[0]))
+        {
+            if (counter < 2)
+            {
+                freeTokens(tokens, length);
+                return false;
+            }
+            counter -= 1;
+        }
+        else
+        {
+            freeTokens(tokens, length);
+            return false;
+        }
+    }
+    freeTokens(tokens, length);
+    return counter == 1;
+}
+
 
 int getOperatorId(const char operator)
 {
@@ -226,16 +299,7 @@ char* convertInfixToPostfix(char* expression)
     // delete stack
     deleteStack(operatorStack);
     // delete tokens
-    for (int i = 0; i < expressionLength; ++i)
-    {
-        if (tokens[i] == NULL)
-        {
-            break;
-        }
-        free(tokens[i]);
-    }
-    free(tokens);
-
+    freeTokens(tokens, expressionLength);
 
     return postfixExpression;
 }

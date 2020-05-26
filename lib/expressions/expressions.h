@@ -6,6 +6,12 @@
 #define HOMEWORK_EXPRESSIONS_H
 
 
+#include <stdbool.h>
+
+bool areParenthesisBalanced(char* expression);
+
 char* convertInfixToPostfix(char* expression);
+
+bool isPostfixExpressionValid(char expression[]);
 
 #endif //HOMEWORK_EXPRESSIONS_H
