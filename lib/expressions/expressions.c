@@ -108,29 +108,6 @@ char** parseIntoTokens(char expression[])
     return tokens;
 }
 
-bool areParenthesisBalanced(char* expression)
-{
-    int length = strlen(expression);
-    int counter = 0;
-    for (int i = 0; i < length; ++i)
-    {
-        char curChar = expression[i];
-        if (curChar == '(')
-        {
-            counter += 1;
-        }
-        else if (curChar == ')')
-        {
-            counter -= 1;
-        }
-        if (counter < 0)
-        {
-            return false;
-        }
-    }
-    return counter == 0;
-}
-
 
 void freeTokens(char** tokens, int tokensNumberUpperBound)
 {
