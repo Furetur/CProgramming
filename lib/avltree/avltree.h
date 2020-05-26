@@ -9,7 +9,7 @@
 
 typedef struct Node {
     int key;
-    unsigned char height;
+    int height;
     // connections
     struct Node* parent;
     struct Node* left;

@@ -49,7 +49,7 @@ void deleteTree(AVLNode* root)
     deleteTree(rightSubtree);
 }
 
-unsigned char getHeight(AVLNode* node)
+int getHeight(AVLNode* node)
 {
     if (node == NULL)
     {
@@ -65,8 +65,8 @@ int getBalanceFactor(AVLNode* node)
 
 void recalculateHeight(AVLNode* node)
 {
-    unsigned char leftHeight = getHeight(node->left);
-    unsigned char rightHeight = getHeight(node->right);
+    int leftHeight = getHeight(node->left);
+    int rightHeight = getHeight(node->right);
     node->height = max(leftHeight, rightHeight) + 1;
 }
 
