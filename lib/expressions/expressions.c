@@ -237,16 +237,7 @@ int evaluatePostfixExpression(char expression[])
     // delete stack
     deleteStack(stack);
     // delete tokens
-    for (int i = 0; i < expressionLength; ++i)
-    {
-        if (tokens[i] == NULL)
-        {
-            break;
-        }
-        free(tokens[i]);
-    }
-    free(tokens);
-
+    freeTokens(tokens, expressionLength);
     return result;
 }
 
