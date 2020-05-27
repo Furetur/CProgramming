@@ -35,7 +35,7 @@ int main()
 
     LinkedListIterator* iterator = getLinkedListIterator(list);
 
-    while(linkedListIteratorHasNext(iterator) && list->size > 1)
+    while (linkedListIteratorHasNext(iterator) && list->size > 1)
     {
         if ((iterator->traversedItems + 1) % killStep == 0)
         {
