@@ -9,6 +9,7 @@
 #include "../arrayutils/arrayutils.h"
 #include "stdlib.h"
 #include "string.h"
+#include "errno.h"
 
 
 const int OPERATORS_NUM = 5;
@@ -20,7 +21,8 @@ char** createTokensArray(const int length)
 {
     char** tokens = malloc(length * sizeof(char*));
 
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         tokens[i] = NULL;
     }
     return tokens;
@@ -154,6 +156,69 @@ bool isPostfixExpressionValid(char expression[])
     }
     freeTokens(tokens, length);
     return counter == 1;
+}
+
+
+int evaluatePostfixExpression(char expression[])
+{
+    const int expressionLength = strlen(expression);
+
+    char** tokens = parseIntoTokens(expression);
+
+    Stack* stack = newStack();
+
+    for (int i = 0; i < expressionLength; i++)
+    {
+        char* curToken = tokens[i];
+        if (curToken == NULL)
+        {
+            break;
+        }
+        if (isInteger(curToken))
+        {
+            const int value = integerFromString(curToken);
+            stackPush(stack, value);
+            continue;
+        }
+        if (strlen(curToken) == 1 && isSymbolMathOperator(curToken[0]))
+        {
+            int operand2 = stackPop(stack);
+            int operand1 = stackPop(stack);
+            int result = 0;
+            if (curToken[0] == '+')
+            {
+                result = operand1 + operand2;
+            }
+            else if (curToken[0] == '*')
+            {
+                result = operand1 * operand2;
+            }
+            else if (curToken[0] == '-')
+            {
+                result = operand1 - operand2;
+            }
+            else if (curToken[0] == '/')
+            {
+                if (operand2 == 0)
+                {
+                    // division by zero
+                    errno = 22;
+                    break;
+                }
+                result = operand1 / operand2;
+            }
+            stackPush(stack, result);
+            continue;
+        }
+        // exception
+    }
+    const int result = stackPop(stack);
+    // free memory
+    // delete stack
+    deleteStack(stack);
+    // delete tokens
+    freeTokens(tokens, expressionLength);
+    return result;
 }
 
 

@@ -8,6 +8,8 @@
 
 #include <stdbool.h>
 
+int evaluatePostfixExpression(char expression[]);
+
 char* convertInfixToPostfix(char* expression);
 
 bool isPostfixExpressionValid(char expression[]);
