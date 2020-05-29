@@ -5,16 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "../arrayutils/arrayutils.h"
 
 
-const int DIGITS[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-const int DIGITS_NUM = 10;
-
-
-int countSubstringOccurrences(const char* parentString, const int parentLength,
-        const char* childString, const int childLength)
+int countSubstringOccurrences(const char* parentString, const char* childString)
 {
+    int parentLength = strlen(parentString);
+    int childLength = strlen(childString);
     if (parentLength < childLength)
     {
         return 0;
@@ -47,19 +45,6 @@ int* countCharOccurrences(const char* str)
 }
 
 
-bool isSymbolDigit(const char symbol)
-{
-    for (int i = 0; i < 10; ++i)
-    {
-        if (symbol == '0' + i)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-
 int getDigitFromSymbol(const char symbol)
 {
     return (int) (symbol - '0');
@@ -78,7 +63,7 @@ bool isInteger(char* string)
 
     for (int i = 0; i < length; ++i)
     {
-        if (!isSymbolDigit(string[i]))
+        if (!isdigit(string[i]))
         {
             return false;
         }
@@ -137,9 +122,5 @@ bool isBalanced(const char str[])
             return false;
         }
     }
-    if (counter != 0)
-    {
-        return false;
-    }
-    return true;
+    return counter == 0;
 }
