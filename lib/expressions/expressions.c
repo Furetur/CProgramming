@@ -13,7 +13,7 @@
 
 
 const int OPERATORS_NUM = 5;
-char operatorIds[5] = {'+', '-', '*', '/', '('};
+const char operatorIds[5] = {'+', '-', '*', '/', '('};
 const int operatorPrecedence[5] = {2, 2, 3, 3, 1};
 
 
