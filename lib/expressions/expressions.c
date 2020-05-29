@@ -188,13 +188,16 @@ int evaluatePostfixExpression(char expression[])
             if (curToken[0] == '+')
             {
                 result = operand1 + operand2;
-            } else if (curToken[0] == '*')
+            }
+            else if (curToken[0] == '*')
             {
                 result = operand1 * operand2;
-            } else if (curToken[0] == '-')
+            }
+            else if (curToken[0] == '-')
             {
                 result = operand1 - operand2;
-            } else if (curToken[0] == '/')
+            }
+            else if (curToken[0] == '/')
             {
                 if (operand2 == 0)
                 {
