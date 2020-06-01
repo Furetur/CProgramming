@@ -11,6 +11,27 @@
 
 const int EXPRESSION_MAX_SIZE = 500;
 
+void tryToEvaluatePostfixExpression(char* postfixExpression)
+{
+    if(!isPostfixExpressionValid(postfixExpression))
+    {
+        printf("The expression you entered is not valid");
+        return;
+    }
+
+    printf("Your expression in the postfix form: %s\n", postfixExpression);
+    const int result = evaluatePostfixExpression(postfixExpression);
+
+    if (errno == 22)
+    {
+        printf("You tried to divide by zero -_-");
+    }
+    else
+    {
+        printf("Evaluation result: %d\n", result);
+    }
+}
+
 int main()
 {
     char* infixExpression = createCharArray(EXPRESSION_MAX_SIZE);
@@ -21,30 +42,15 @@ int main()
     if (!isBalanced(infixExpression))
     {
         printf("Wrong combination of parenthesis");
+        free(infixExpression);
+        return 0;
     }
-    else
-    {
-        char* postfixExpression = convertInfixToPostfix(infixExpression);
 
-        if (isPostfixExpressionValid(postfixExpression))
-        {
-            printf("Your expression in the postfix form: %s\n", postfixExpression);
-            const int result = evaluatePostfixExpression(postfixExpression);
-            if (errno == 22)
-            {
-                printf("You tried to divide by zero -_-");
-            }
-            else
-            {
-                printf("Evaluation result: %d\n", result);
-            }
-        }
-        else
-        {
-            printf("The expression you entered is not valid");
-        }
-        free(postfixExpression);
-    }
+    char* postfixExpression = convertInfixToPostfix(infixExpression);
+
+    tryToEvaluatePostfixExpression(postfixExpression);
+
+    free(postfixExpression);
     free(infixExpression);
     return 0;
 }
