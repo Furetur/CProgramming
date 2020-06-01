@@ -32,3 +32,6 @@ target_link_libraries(Homework5Task2 AllLib)
 
 add_executable(Homework5Task3 hw5/5.3.c)
 target_link_libraries(Homework5Task3 AllLib)
+
+add_executable(Homework6Task1 hw6/6.1.c)
+target_link_libraries(Homework6Task1 AllLib)
