@@ -13,7 +13,7 @@ const int EXPRESSION_MAX_SIZE = 500;
 
 void tryToEvaluatePostfixExpression(char* postfixExpression)
 {
-    if(!isPostfixExpressionValid(postfixExpression))
+    if (!isPostfixExpressionValid(postfixExpression))
     {
         printf("The expression you entered is not valid");
         return;
@@ -25,11 +25,9 @@ void tryToEvaluatePostfixExpression(char* postfixExpression)
     if (errno == 22)
     {
         printf("You tried to divide by zero -_-");
+        return;
     }
-    else
-    {
-        printf("Evaluation result: %d\n", result);
-    }
+    printf("Evaluation result: %d\n", result);
 }
 
 int main()
