@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "arrayutils.h"
+#include "../commonutils/commonutils.h"
 
 
 void fillCharArray(char* array, const int size, const char val)
@@ -209,9 +210,7 @@ void reverseIntArray(int arr[], const int start, const int end)
     int right = end;
     while (left < right)
     {
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
+        swapInts(&arr[left], &arr[right]);
         left++;
         right--;
     }
@@ -219,6 +218,18 @@ void reverseIntArray(int arr[], const int start, const int end)
 
 
 bool areArraysEqual(const char* arr1, const char* arr2, const int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        if (arr1[i] != arr2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool areIntArraysEqual(const int* arr1, const int* arr2, const int size)
 {
     for (int i = 0; i < size; ++i)
     {
@@ -271,20 +282,17 @@ int partitionArray(int* arr, const int startIndex, const int endIndex)
         if (curElement < pivot)
         {
             // swap
-            int temp = curElement;
-            arr[curIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-            arr[leftElementGreaterOrEqualThanPivotIndex] = temp;
+            swapInts(&arr[curIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
             leftElementGreaterOrEqualThanPivotIndex++;
         }
     }
     // swap pivot with the first element that is >= than pivot
-    arr[pivotIndex] = arr[leftElementGreaterOrEqualThanPivotIndex];
-    arr[leftElementGreaterOrEqualThanPivotIndex] = pivot;
+    swapInts(&arr[pivotIndex], &arr[leftElementGreaterOrEqualThanPivotIndex]);
     return leftElementGreaterOrEqualThanPivotIndex;
 }
 
 
-void quickSort(int* arr,const int startIndex,const int endIndex)
+void quickSort(int* arr, const int startIndex, const int endIndex)
 {
     if (startIndex >= endIndex)
     {
@@ -301,7 +309,7 @@ bool allTruthy(const bool* arr, const int size)
 {
     for (int i = 0; i < size; ++i)
     {
-        if (arr[i] == false)
+        if (!arr[i])
         {
             return false;
         }
@@ -314,7 +322,7 @@ bool allFalsy(const bool* arr, const int size)
 {
     for (int i = 0; i < size; ++i)
     {
-        if (arr[i] == true)
+        if (arr[i])
         {
             return false;
         }
