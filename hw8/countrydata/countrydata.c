@@ -28,7 +28,7 @@ void markCitiesReachable(GraphAdjacencyList* graph, int keyCityId, bool* reachab
     LinkedList* neighbours = graph->adjacencyList[keyCityId];
     LinkedListIterator* neighboursIterator = getLinkedListIterator(neighbours);
 
-    while(linkedListIteratorHasNext(neighboursIterator))
+    while (linkedListIteratorHasNext(neighboursIterator))
     {
         const int curNeighbour = linkedListIteratorGetNext(neighboursIterator);
         // mark neighbour visited

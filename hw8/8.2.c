@@ -69,7 +69,7 @@ void printCitiesOfCountries(WorldData* worldData)
 
         printf("Cities of country %d \n", countryId + 1);
 
-        while(linkedListIteratorHasNext(countryCitiesIterator))
+        while (linkedListIteratorHasNext(countryCitiesIterator))
         {
             printf("%d ", linkedListIteratorGetNext(countryCitiesIterator) + 1);
         }
