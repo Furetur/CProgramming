@@ -52,7 +52,9 @@ int main()
             if (AVLTreeIncludes(tree, number))
             {
                 printf("> (TRUE) the tree includes the key %d\n", number);
-            } else {
+            }
+            else
+            {
                 printf("> (FALSE) the tree does not include the key %d\n", number);
             }
         }
