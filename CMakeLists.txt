@@ -12,9 +12,8 @@ add_library(
         lib/stack/stack.h lib/stack/stack.c
         lib/expressions/expressions.c lib/expressions/expressions.h
         lib/avltree/avltree.h lib/avltree/avltree.c
+        lib/pair/pair.c lib/pair/pair.h
         lib/graph/graph.c lib/graph/graph.h
-        hw8/countrydata/countrydata.c hw8/countrydata/countrydata.h
-        hw8/worlddata/worlddata.c hw8/worlddata/worlddata.h
 )
 
 add_executable(Homework1Task11 hw1/1.11.c)
@@ -43,5 +42,9 @@ target_link_libraries(Homework6Task1 AllLib)
 add_executable(Homework7Task1 hw7/7.1.c)
 target_link_libraries(Homework7Task1 AllLib)
 
-add_executable(Homework8Task2 hw8/8.2.c)
+add_executable(
+        Homework8Task2 hw8/8.2.c
+        hw8/countrydata/countrydata.c hw8/countrydata/countrydata.h
+        hw8/worlddata/worlddata.c hw8/worlddata/worlddata.h
+)
 target_link_libraries(Homework8Task2 AllLib)
