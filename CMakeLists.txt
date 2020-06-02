@@ -11,6 +11,7 @@ add_library(
         lib/linkedlist/linkedlist.c lib/linkedlist/linkedlist.h
         lib/stack/stack.h lib/stack/stack.c
         lib/expressions/expressions.c lib/expressions/expressions.h
+        lib/avltree/avltree.h lib/avltree/avltree.c
 )
 
 add_executable(Homework1Task11 hw1/1.11.c)
@@ -35,3 +36,6 @@ target_link_libraries(Homework5Task3 AllLib)
 
 add_executable(Homework6Task1 hw6/6.1.c)
 target_link_libraries(Homework6Task1 AllLib)
+
+add_executable(Homework7Task1 hw7/7.1.c)
+target_link_libraries(Homework7Task1 AllLib)
