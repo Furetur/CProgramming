@@ -353,10 +353,10 @@ bool linkedListContains(struct LinkedList* list, const int value)
         const int curValue = linkedListIteratorGetNext(iterator);
         if (curValue == value)
         {
-            free(iterator);
+            deleteLinkedListIterator(iterator);
             return true;
         }
     }
-    free(iterator);
+    deleteLinkedListIterator(iterator);
     return false;
 }
