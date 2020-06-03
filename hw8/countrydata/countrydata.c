@@ -34,7 +34,7 @@ void markCitiesReachable(GraphAdjacencyList* graph, int keyCityId, bool* reachab
         // mark neighbour visited
         reachableCities[curNeighbour] = true;
     }
-    free(neighboursIterator);
+    deleteLinkedListIterator(neighboursIterator);
 }
 
 
