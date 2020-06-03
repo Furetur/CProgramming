@@ -63,7 +63,7 @@ void performAllNullTransitions(NonDeterministicMachine* machine)
 
     LinkedListIterator* currentStatesIterator = getLinkedListIterator(machine->currentStates);
 
-    while(linkedListIteratorHasNext(currentStatesIterator))
+    while (linkedListIteratorHasNext(currentStatesIterator))
     {
         const int state = linkedListIteratorGetNext(currentStatesIterator);
         performNullTransitions(machine, state);
@@ -78,7 +78,7 @@ void moveMachine(NonDeterministicMachine* machine, char token)
 
     LinkedListIterator* statesIterator = getLinkedListIterator(machine->currentStates);
 
-    while(linkedListIteratorHasNext(statesIterator))
+    while (linkedListIteratorHasNext(statesIterator))
     {
         const int currentStateId = linkedListIteratorGetNext(statesIterator);
         const int nextState = machine->stateTable[currentStateId][token];
