@@ -48,3 +48,9 @@ add_executable(
         hw8/worlddata/worlddata.c hw8/worlddata/worlddata.h
 )
 target_link_libraries(Homework8Task2 AllLib)
+
+add_executable(
+        Homework9Task1 hw9/9.1.c
+        hw9/machine/machine.c hw9/machine/machine.h
+)
+target_link_libraries(Homework9Task1 AllLib)
